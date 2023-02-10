@@ -39,9 +39,8 @@
 
    [窗口其他API](https://github.com/GTyingzi/BigDATA/blob/main/大数据框架/Flink.md#11)
 
-  [Flink的Checkpoint(重点)
+  [Flink的Checkpoint(重点)](https://github.com/GTyingzi/BigDATA/blob/main/大数据框架/Flink.md#12)
 
-[](https://github.com/GTyingzi/BigDATA/blob/main/大数据框架/Flink.md#12)
    [checkpoint保存](https://github.com/GTyingzi/BigDATA/blob/main/大数据框架/Flink.md#13)
 
    [checkpoint恢复](https://github.com/GTyingzi/BigDATA/blob/main/大数据框架/Flink.md#14)
@@ -68,7 +67,6 @@
    [模式API](https://github.com/GTyingzi/BigDATA/blob/main/大数据框架/Flink.md#25)
 
    [模式的检测处理](https://github.com/GTyingzi/BigDATA/blob/main/大数据框架/Flink.md#26)
-
   [Flink处理背压](https://github.com/GTyingzi/BigDATA/blob/main/大数据框架/Flink.md#27)
 
   [Flink SQL解析过程](https://github.com/GTyingzi/BigDATA/blob/main/大数据框架/Flink.md#28)
