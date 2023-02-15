@@ -1,5 +1,12 @@
 # BigDATA
 
+若需要PDF档，百度网盘自取：
+
+链接：https://pan.baidu.com/s/1Yo8f4KCO2ksrw6ac9phvbA 
+提取码：362c
+
+![](https://yingziimage.oss-cn-beijing.aliyuncs.com/img/202302151732941.png)
+
 
 
 ## Java
@@ -46,6 +53,10 @@
 
 
 
+### [Flume](https://github.com/GTyingzi/BigDATA/blob/main/大数据框架/Flume.md#0)
+
+
+
 ### [ElasticSearch](https://github.com/GTyingzi/BigDATA/blob/main/大数据框架/ElasticSearch.md#0)
 
 
@@ -85,4 +96,8 @@
 
 
 ## 数据库
+
+### [Mysql](https://github.com/GTyingzi/BigDATA/blob/main/数据库/Mysql.md#0)
+
+
 

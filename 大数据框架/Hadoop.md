@@ -35,12 +35,12 @@
 &emsp;&emsp;&emsp;&emsp;<a href="#34">ReduceTask机制</a>  
 &emsp;&emsp;&emsp;&emsp;<a href="#35">MapTask & ReduceTask源码解析</a>  
 &emsp;&emsp;&emsp;&emsp;<a href="#36">MapReduce数据倾斜</a>  
-&emsp;<a href="#37">Yarn区域</a>  
-&emsp;&emsp;<a href="#38">Yarn组件</a>  
-&emsp;&emsp;<a href="#39">Yarn工作机制</a>  
-&emsp;&emsp;<a href="#40">Yarn调度器</a>  
-&emsp;&emsp;<a href="#41">Yarn生产环境核心参数</a>  
-&emsp;&emsp;<a href="#42">Yarn监控</a>  
+&emsp;&emsp;<a href="#37">Yarn区域</a>  
+&emsp;&emsp;&emsp;<a href="#38">Yarn组件</a>  
+&emsp;&emsp;&emsp;<a href="#39">Yarn工作机制</a>  
+&emsp;&emsp;&emsp;<a href="#40">Yarn调度器</a>  
+&emsp;&emsp;&emsp;<a href="#41">Yarn生产环境核心参数</a>  
+&emsp;&emsp;&emsp;<a href="#42">Yarn监控</a>  
 
 
 ## <a name="0">Hadoop（重）
@@ -693,12 +693,12 @@ Hadoop平台的解决办法
 
 
 
-## <a name="37">Yarn区域
+### <a name="37">Yarn区域
 
 
 Yarn是一个资源调度平台，负责为运算程序提供服务器运算资源，相当于一个**分布式的操作系统平台**，MapReduce等运算程序相当于运行在操作系统之上的应用程序
 
-### <a name="38">Yarn组件
+#### <a name="38">Yarn组件
 
 
 Yarn主要包含：ResourceManager（RM）、NodeManager（NM）、ApplicationMaster和Container模块
@@ -722,7 +722,7 @@ Containr：
 	是Yarn中的资源抽象，封装了某个节点上的多维度资源，如内存、CPU、磁盘、网络等
 ```
 
-### <a name="39">Yarn工作机制
+#### <a name="39">Yarn工作机制
 
 
 ![](https://yingziimage.oss-cn-beijing.aliyuncs.com/img/image-20220317090207906.png)
@@ -758,7 +758,7 @@ YARN中的任务将其进度和状态返回给应用管理器，客户端每秒�
 除了向应用管理器请求作业进度外，客户端每5秒都会通过调用waitForCompletion()来检查作业是否完成，时间间隔用mapreduce.client.completion.pollinterval来设置。作业完成之后，应用管理器和Container会清理工作状态。作业的信息会被作业历史服务器存储以备之后用户核查
 ```
 
-### <a name="40">Yarn调度器
+#### <a name="40">Yarn调度器
 
 
 目前Hadoop作业调度器主要有三种：FIFO、容量（Capacity Scheduler）和公平（Fair Scheduler）
@@ -809,12 +809,12 @@ Facebook开发的多用户调度器
 		Fair：FIFO、FAIR、DRF
 ```
 
-### <a name="41">Yarn生产环境核心参数
+#### <a name="41">Yarn生产环境核心参数
 
 
 ![](https://yingziimage.oss-cn-beijing.aliyuncs.com/img/image-20220320203920866.png)
 
-### <a name="42">Yarn监控
+#### <a name="42">Yarn监控
 
 
 配置yarn-site.xml开启日志聚合，日志聚集是Yarn提供的日志中央化管理功能，它能将运行完成的Container/任务日志上传到HDFS上，从而减轻NM负载，且提供一个中央化存储和分析机制。默认情况下，Container/任务日志存储在各个NM上
