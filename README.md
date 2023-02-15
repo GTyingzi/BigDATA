@@ -4,7 +4,11 @@
 
 ## Java
 
+### [JVM](https://github.com/GTyingzi/BigDATA/blob/main/Java/JVM.md#0)
 
+
+
+### [JUC](https://github.com/GTyingzi/BigDATA/blob/main/Java/JUC.md#0)
 
 
 
@@ -46,6 +50,30 @@
 
 
 
+### 其他大数据框架
+
+以下只是些介绍和使用操作
+
+
+
+#### [安全认证Kerberos](https://github.com/GTyingzi/BigDATA/blob/main/其他大数据框架/Kerberos.md#0)
+
+
+
+#### [即席查询Presto](https://github.com/GTyingzi/BigDATA/blob/main/其他大数据框架/Presto.md#0)
+
+
+
+#### [即席查询Kylin](https://github.com/GTyingzi/BigDATA/blob/main/其他大数据框架/Kylin.md#0)
+
+
+
+#### [可视化Superser](https://github.com/GTyingzi/BigDATA/blob/main/其他大数据框架/Superser.md#0)
+
+
+
+#### [元数据管理Atlas](https://github.com/GTyingzi/BigDATA/blob/main/其他大数据框架/Atlas.md#0)
+
 ## 计算机基础
 
 ### [操作系统](https://github.com/GTyingzi/BigDATA/blob/main/计算机基础/操作系统.md#0)
@@ -53,3 +81,8 @@
 
 
 ### [计算机网络](https://github.com/GTyingzi/BigDATA/blob/main/计算机基础/计算机网络.md#0)
+
+
+
+## 数据库
+
