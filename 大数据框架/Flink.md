@@ -29,7 +29,9 @@
 &emsp;&emsp;<a href="#28">Flink SQL解析过程</a>  
 ## <a name="0">Flink
 
+
 ### <a name="1">Flink介绍
+
 
 流式大数据处理引擎
 
@@ -47,6 +49,7 @@ Flink区别与传统数据处理框架特性如下：
 <img src="https://yingziimage.oss-cn-beijing.aliyuncs.com/img/202206212301500.png" style="zoom:67%;" />
 
 ### <a name="2">Flink架构(重点)
+
 
 <img src="https://yingziimage.oss-cn-beijing.aliyuncs.com/img/image-20220430170918410.png" style="zoom:67%;" />
 
@@ -106,7 +109,9 @@ Flink集群中至少有一个TaskManager，分布式计算会有多个
 
 ### <a name="3">作业提交流程
 
+
 #### <a name="4">高层级视角
+
 
 ![](https://yingziimage.oss-cn-beijing.aliyuncs.com/img/image-20220430182738138.png)
 
@@ -124,6 +129,7 @@ Flink集群中至少有一个TaskManager，分布式计算会有多个
 
 #### <a name="5">独立模式
 
+
 <img src="https://yingziimage.oss-cn-beijing.aliyuncs.com/img/image-20220430183110363.png" style="zoom:67%;" />
 
 ```
@@ -133,6 +139,7 @@ JobMaster启动时间点，会话模式预先启动，应用模式则在作业�
 ```
 
 #### <a name="6">YARN集群
+
 
 有三类模式：**会话模式**(Session)、**单作业模式**(Per-Job)、**应用模式**(Application)
 
@@ -179,6 +186,7 @@ JobMaster启动时间点，会话模式预先启动，应用模式则在作业�
 ```
 
 ### <a name="7">Flink的水位线(重点)
+
 
 先引申Flink中的时间语义：**处理时间**、**事件时间**
 
@@ -255,6 +263,7 @@ public void onPeriodicEmit(WatermarkOutput output) {
 
 ### <a name="8">Flink的窗口(重点)
 
+
 将无限数据切割成有限大数据块，处理无界流的核心
 
 <img src="https://yingziimage.oss-cn-beijing.aliyuncs.com/img/image-20220430203808594.png" alt="image-20220430203808594" style="zoom: 50%;" />
@@ -265,6 +274,7 @@ public void onPeriodicEmit(WatermarkOutput output) {
 - 窗口关闭：到达窗口结束时间时，窗口就触发计算并关闭
 
 #### <a name="9">窗口分类
+
 
 **<u>按照驱动型分类</u>**：时间窗口、计数窗口
 
@@ -327,6 +337,7 @@ size：两个会话窗口之间的最小距离。可设置静态固定的size，
 ```
 
 #### <a name="10">窗口函数
+
 
 定义窗口分配，决定数据属于哪个窗口；定义窗口函数，如何进行计算
 
@@ -413,6 +424,7 @@ size：两个会话窗口之间的最小距离。可设置静态固定的size，
 ```
 
 #### <a name="11">窗口其他API
+
 
 对于窗口算子，窗口分配器和窗口函数是必须的。选用其他一些API能更加灵活控制窗口行为：**触发器**、**移除器**、**允许延迟**、**侧输出流**
 
@@ -544,9 +556,11 @@ public <X> DataStream<X> getSideOutput(OutputTag<X> sideOutputTag) {
 
 ### <a name="12">Flink的Checkpoint(重点)
 
+
 Flink容错机制的核心。检查是针对故障恢复的结果而言，在有状态的流处理中，任务继续处理新数据，不需要之前的计算结果，而是需要任务之前的状态。故障恢复之后应该于发生故障前完全一致，需要检查结果的正确性，因此Checkpoint又称为一致性检查点
 
 #### <a name="13">checkpoint保存
+
 
 - 检查点保存：周期性地触发保存
 
@@ -557,6 +571,7 @@ Flink容错机制的核心。检查是针对故障恢复的结果而言，在有
   作业管理器的堆内存(JobManagerCheckpointStorage)、文件系统(FileSystemCheckpointStorage)
 
 #### <a name="14">checkpoint恢复
+
 
 在允许流处理程序是，Flink周期性地保存检查点，当发生故障时，找到最近一次成功保存的检查点来恢复状态
 
@@ -589,6 +604,7 @@ Flink容错机制的核心。检查是针对故障恢复的结果而言，在有
 <img src="https://yingziimage.oss-cn-beijing.aliyuncs.com/img/image-20220501113101896.png" style="zoom: 67%;" />
 
 #### <a name="15">checkpoint算法
+
 
 **检查点分界线(Barrier)**：借鉴水位线设计，在数据流中插入一个特殊的数据结构，专门用来表示触发检查点保存的时间点
 
@@ -640,6 +656,7 @@ Map任务没有状态，故直接将barrier继续向下游传递，这时由于�
 当JobManager收到所有任务成功保存状态的信息，就可以确认当前检查点成功保存，之后遇到故障就可以从这里恢复了
 
 #### <a name="16">checkpoint配置
+
 
 检查点的作用是为了故障恢复，我们不能因为保存检查点占据大量时间，导致数据处理性能明显降低。可在代码中对检查点进行配置
 
@@ -709,6 +726,7 @@ checkpointConfig.setCheckpointStorage("hdfs://my/checkpoint/dir")
 
 #### <a name="17">Savepoint
 
+
 除了检查点外，Flink提供了另一个非常独特的镜像保存功能——保存点(Savepoint)
 
 它的原理和算法与检查点完全相同，通过检查点机制来创建流式作业状态的一致性镜像(consistent image)，多了额外的元数据
@@ -753,7 +771,9 @@ DataStream<String> stream = env
 
 ### <a name="18">Exactly-One(重点)
 
+
 #### <a name="19">概念
+
 
 一致性是结果的正确性，对于分布式系统而言，强调的是不同节点中相同数据的副本应该总是一致的。多个节点并行处理不同的任务，要保证计算结构的正确性，必须不漏掉任何一个数据，不重复处理同一个数据，在发生故障、需要恢复状态进行回滚时就需要更多的保障机制了，通过检查点的保存来保证状态恢复后的结果正确
 
@@ -771,6 +791,7 @@ DataStream<String> stream = env
 
 #### <a name="20">输入端保证
 
+
 Flink读取的外部数据源，对于一些数据源来说并不提供数据的缓冲或持久化保存，数据被消费之后就彻底不存在了，故障后通过检查点恢复到之前状态，但保存检查点到发生故障期间的数据不能重发，就会导致数据丢失，只能保证at-most-once的一致性语义
 
 想要在故障恢复后不丢失数据，外部数据源就必须拥有重放数据的能力。常见的做法就是对数据进行持久化保存，并且可以重设数据的读取位置。一个最经典的应用就是Kafka，在Flink的Source任务中将数据读取的偏移量保存为状态，在故障恢复时从检查点中读取处理，对数据源重置偏移量，重新获取数据
@@ -778,6 +799,7 @@ Flink读取的外部数据源，对于一些数据源来说并不提供数据的
 数据可重复 + 检查点 -> at-least-once一致性语义的基本要求
 
 #### <a name="21">输出端保证
+
 
 数据有可能重复写入外部系统，检查点保存之后，继续到来的数据会一一处理，任务的状态也会更新，最终通过Sink任务将计算结果输出到外部系统
 
@@ -832,7 +854,9 @@ Flink提供了TwoPhaseCommitSinkFunction接口，方便我们自定义两阶段�
 
 ### <a name="22">Flink的CEP(重点)
 
+
 #### <a name="23">概念
+
 
 复杂事件处理(Complex Event Processing，**CEP**)：针对流处理而言，分析的是低延迟、频繁产生的事件流，检测特定的数据组合
 
@@ -858,6 +882,7 @@ CEP的流出可分为三个步骤：
 
 #### <a name="24">应用场景
 
+
 CEP主要用于实时流数据对分析处理，旨在分析复杂的、看似不相关的事件流中找出有意义的事件组合，进而可以实时地分析判断、输出通知信息或报警
 
 - 风险控制：针对用户的异常行为进行实时检。例如，当用户短时间内频繁登录失败、大量下单却不支付
@@ -869,6 +894,7 @@ CEP主要用于实时流数据对分析处理，旨在分析复杂的、看似�
 
 
 #### <a name="25">模式API
+
 
 Flink CEP的核心是复杂事件的模式匹配
 
@@ -943,6 +969,7 @@ Pattern.begin("start", AfterMatchSkipStrategy.noSkip())
 
 
 #### <a name="26">模式的检测处理
+
 
 将模式应用到事件流上、检测提取匹配的复杂事件，最终得到想要的输出信息
 
@@ -1023,6 +1050,7 @@ Pattern.begin("start", AfterMatchSkipStrategy.noSkip())
 
 ### <a name="27">Flink处理背压
 
+
 系统在一个临时负载峰值期间接收数据的速率大于其处理速率的一种场景（通俗的讲：接收速度 > 接收速度），处理不当会导致资源耗尽，数据丢失
 
 - 消息发送太快，消息接收太慢，产生消息拥堵
@@ -1031,6 +1059,7 @@ Pattern.begin("start", AfterMatchSkipStrategy.noSkip())
 **Flink利用自身作为纯数据流引擎的优势来响应背压问题**：Flink运行时主要由operators、streams两大组件构成。每个operator会消费中间态的流，并在流上进行转换，然后生成新的流。Flink使用了高效有界的分布式阻塞队列，一个较慢的接受者会降低发送者的发送效率。队列容量通过缓冲池(LocalBufferPool)来实现，每个生产、消费的流都会被分配以个缓冲区，缓冲被消费后可被回收循环利用
 
 ### <a name="28">Flink SQL解析过程
+
 
 ![](https://yingziimage.oss-cn-beijing.aliyuncs.com/img/image-20220502101803380.png)
 
