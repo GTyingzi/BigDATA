@@ -1,9 +1,6 @@
 # BigDATA
 
-若需要PDF档，百度网盘自取：
-
-链接：https://pan.baidu.com/s/1Yo8f4KCO2ksrw6ac9phvbA 
-提取码：362c
+若需要PDF档,加vx:yinzi_GT
 
 ![](https://yingziimage.oss-cn-beijing.aliyuncs.com/img/202302151732941.png)
 
