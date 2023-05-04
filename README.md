@@ -1,6 +1,8 @@
 # BigDATA
 
-若需要PDF档,加vx:yinzi_GT
+若需要PDF档,加vx:yingzi_GT
+![image](https://user-images.githubusercontent.com/69392589/236115312-2601e097-17a7-45cb-a6ce-2fd8bdf4929a.png)
+
 
 ![](https://yingziimage.oss-cn-beijing.aliyuncs.com/img/202302151732941.png)
 
