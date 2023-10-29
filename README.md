@@ -1,6 +1,6 @@
 # BigDATA
 
-若需要PDF档,加vx:yingzi_GT
+若需要PDF档,个人博客获取：![个人博客](http://yingzi.live/Personal)
 
 ![](https://yingziimage.oss-cn-beijing.aliyuncs.com/img/202302151732941.png)
 
