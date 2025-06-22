@@ -1,6 +1,6 @@
 # BigDATA
 
-![大数据学习路线](https://ik3te1knhq.feishu.cn/wiki/GM8xw4hDkispZykkJx5cyHSGncb)
+[在线阅读](https://ik3te1knhq.feishu.cn/wiki/GM8xw4hDkispZykkJx5cyHSGncb)
 
 ![](https://yingziimage.oss-cn-beijing.aliyuncs.com/img/202302151732941.png)
 
